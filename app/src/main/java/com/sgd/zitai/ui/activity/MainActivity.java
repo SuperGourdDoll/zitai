@@ -2,19 +2,23 @@ package com.sgd.zitai.ui.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.SparseArray;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.FrameLayout;
-
 
 import com.sgd.zitai.R;
+import com.sgd.zitai.adapter.MainViewPagerAdapter;
 import com.sgd.zitai.ui.BaseActivity;
 import com.sgd.zitai.ui.fragment.IPFragment;
+
+import java.util.LinkedList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,12 +27,17 @@ public class MainActivity extends BaseActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.container)
-    FrameLayout container;
+//    @BindView(R.id.container)
+//    FrameLayout container;
     @BindView(R.id.navigationView)
     NavigationView navigationView;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
+    @BindView(R.id.vp)
+    ViewPager mViewPager;
+    @BindView(R.id.tl)
+    TabLayout mTabLayout;
+
     private SparseArray<Fragment> fragmentSparseArray;
 
     @Override
@@ -37,14 +46,26 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main2);
         ButterKnife.bind(this);
         init();
-        initData();
+        initViewPager();
+//        initData();
+    }
+
+    private void initViewPager() {
+
+        List<Fragment> fragments=new LinkedList<>();
+        for (int i=0;i<3;i++) {
+            fragments.add(IPFragment.newInstance());
+        }
+        MainViewPagerAdapter adapter=new MainViewPagerAdapter(getSupportFragmentManager(),MainActivity.this,fragments);
+        mViewPager.setAdapter(adapter);
+        mTabLayout.setupWithViewPager(mViewPager);
     }
 
     private void initData() {
         fragmentSparseArray = new SparseArray<>();
         fragmentSparseArray.append(0, new IPFragment());
         for (int i = 0; i < fragmentSparseArray.size(); i++) {
-            getSupportFragmentManager().beginTransaction().add(R.id.container, fragmentSparseArray.get(i)).commit();
+//            getSupportFragmentManager().beginTransaction().add(R.id.container, fragmentSparseArray.get(i)).commit();
         }
         startFragment(IPFragment.class);
     }

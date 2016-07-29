@@ -50,6 +50,14 @@ public class IPFragment extends BaseFragment implements IpInfoContract.View {
         return view;
     }
 
+    public static IPFragment newInstance() {
+        
+        Bundle args = new Bundle();
+        
+        IPFragment fragment = new IPFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     public ProgressBar getLoadingView() {
