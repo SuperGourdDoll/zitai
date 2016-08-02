@@ -7,19 +7,36 @@ import android.view.View;
 
 import com.sgd.zitai.utils.ToastUtils;
 
+import butterknife.ButterKnife;
+
 
 /**
  * Created by Allen Liu on 2016/6/2.
  */
-public class BaseActivity extends AppCompatActivity {
-    public Context that=this;
+public abstract class BaseActivity extends AppCompatActivity {
+    public Context that = this;
 
-    protected void Snack(String content,View view){
-     Snackbar.make(view,content,Snackbar.LENGTH_SHORT).show();
+    protected abstract void initialize();
+
+    protected void Snack(String content, View view) {
+        Snackbar.make(view, content, Snackbar.LENGTH_SHORT).show();
     }
 
-    protected void T(String content){
-        ToastUtils.showToast(this,content);
+    protected void T(String content) {
+        ToastUtils.showToast(this, content);
     }
 
+    @Override
+    public void setContentView(int layoutResID) {
+        super.setContentView(layoutResID);
+        ButterKnife.bind(this);
+        initialize();
+    }
+
+    @Override
+    public void setContentView(View view) {
+        super.setContentView(view);
+        ButterKnife.bind(this);
+        initialize();
+    }
 }

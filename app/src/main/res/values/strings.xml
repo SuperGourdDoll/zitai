@@ -3,6 +3,7 @@
     <string name="record">摄影</string>
     <string name="picture">图片</string>
     <string name="word">文字</string>
+    <string name="see">所见</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

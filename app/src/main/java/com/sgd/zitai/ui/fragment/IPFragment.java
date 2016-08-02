@@ -51,9 +51,7 @@ public class IPFragment extends BaseFragment implements IpInfoContract.View {
     }
 
     public static IPFragment newInstance() {
-        
         Bundle args = new Bundle();
-        
         IPFragment fragment = new IPFragment();
         fragment.setArguments(args);
         return fragment;

@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-<group
-    android:id="@+id/upper_group"
+<group  android:id="@+id/upper_group"
     android:checkableBehavior="single">
+    <item
+        android:icon="@android:drawable/ic_menu_compass"
+        android:id="@+id/item_see"
+        android:title="所见"
+        android:checked="true"></item>
     <item
         android:icon="@android:drawable/ic_menu_compass"
         android:id="@+id/item_today"
         android:title="Today">
-    </item>
-    <item
-        android:icon="@android:drawable/ic_menu_compass"
-        android:id="@+id/item_see"
-        android:title="The See">
     </item>
     <item
         android:icon="@android:drawable/ic_menu_compass"
