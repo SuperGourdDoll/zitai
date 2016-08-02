@@ -1,9 +1,4 @@
 package com.sgd.zitai.retrofit.service;
-
-
-
-
-
 import com.sgd.zitai.bean.IpBean;
 
 import java.util.Map;

@@ -3,8 +3,8 @@
 <group android:checkableBehavior="single">
     <item
         android:icon="@android:drawable/ic_menu_compass"
-        android:id="@+id/item_ip"
-        android:title="测试fragment"
+        android:id="@+id/item_see"
+        android:title="所见"
         android:checked="true"></item>
 
 </group>
