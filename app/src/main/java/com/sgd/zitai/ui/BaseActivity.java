@@ -13,10 +13,13 @@ import com.sgd.zitai.utils.ToastUtils;
  */
 public class BaseActivity extends AppCompatActivity {
     public Context that=this;
+
     protected void Snack(String content,View view){
      Snackbar.make(view,content,Snackbar.LENGTH_SHORT).show();
     }
+
     protected void T(String content){
         ToastUtils.showToast(this,content);
     }
+
 }

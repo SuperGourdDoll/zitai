@@ -1,11 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-<group android:checkableBehavior="single">
+<group
+    android:id="@+id/upper_group"
+    android:checkableBehavior="single">
     <item
         android:icon="@android:drawable/ic_menu_compass"
-        android:id="@+id/item_ip"
-        android:title="测试fragment"
-        android:checked="true"></item>
-
+        android:id="@+id/item_today"
+        android:title="Today">
+    </item>
+    <item
+        android:icon="@android:drawable/ic_menu_compass"
+        android:id="@+id/item_see"
+        android:title="The See">
+    </item>
+    <item
+        android:icon="@android:drawable/ic_menu_compass"
+        android:id="@+id/item_voice"
+        android:title="The Voice">
+    </item>
+    <item
+        android:icon="@android:drawable/ic_menu_compass"
+        android:id="@+id/item_collection"
+        android:title="Collections">
+    </item>
 </group>
+    <group android:checkableBehavior="none"
+        android:id="@+id/group_manage">
+        <item
+            android:id="@+id/item_exit"
+            android:title="Exit"
+            android:icon="@android:drawable/ic_lock_power_off"/>
+    </group>
 </menu>
