@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-<item
-   android:icon="@android:mipmap/sym_def_app_icon"
-    android:showAsAction="always"
-    android:title="menu"></item>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_setting"
+        android:orderInCategory="80"
+        android:title="设置"
+        app:showAsAction="withText"
+        android:icon="@android:drawable/ic_menu_help"/>
+    <item
+        android:id="@+id/action_nightmode"
+        android:orderInCategory="80"
+        android:title="夜间模式"
+        app:showAsAction="withText"
+        android:icon="@android:drawable/ic_menu_help"/>
+    <item
+        android:id="@+id/action_about"
+        android:orderInCategory="80"
+        android:title="关于App"
+        app:showAsAction="withText"
+        android:icon="@android:drawable/ic_menu_help"/>
 </menu>

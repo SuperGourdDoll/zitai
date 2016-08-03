@@ -14,5 +14,6 @@ import rx.Observable;
 public interface    ApiService {
     @GET("/service/getIpInfo.php")
     Observable<IpBean>getIp(@Query("ip")String ip);
+
     Observable<IpBean>getIp(@QueryMap Map<String,String> map);
 }

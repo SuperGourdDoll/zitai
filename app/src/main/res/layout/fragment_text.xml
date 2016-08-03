@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_text_swipe"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sgd.zitai.ui.fragment.TextFragment">
+       <!-- <com.sgd.zitai.ui.widget.MultipleStatusView
+            android:id="@+id/fragment_text_multistatus"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/fragment_text_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </com.sgd.zitai.ui.widget.MultipleStatusView>-->
+
+  <!--     <android.support.v4.widget.SwipeRefreshLayout
+           android:id="@+id/fragment_text_swipe"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           />-->
+       <!--<ScrollView-->
+           <!--android:layout_width="match_parent"-->
+           <!--android:layout_height="match_parent">-->
+              <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                  <!--&lt;!&ndash;android:text="123"&ndash;&gt;-->
+                  <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                  <!--&lt;!&ndash;android:layout_height="wrap_content" />&ndash;&gt;-->
+
+
+       <android.support.v7.widget.RecyclerView
+           android:id="@+id/fragment_text_recyclerview"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+
+
+       </android.support.v7.widget.RecyclerView>
+
+       <!--</ScrollView>-->
+
+
+</android.support.v4.widget.SwipeRefreshLayout>

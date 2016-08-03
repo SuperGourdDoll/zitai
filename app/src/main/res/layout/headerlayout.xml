@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<ImageView
-    android:layout_width="match_parent"
-    android:background="@mipmap/ceshi"
-    android:layout_height="200dp" />
-</LinearLayout>
+    android:layout_height="200dp">
+
+
+    <ImageView
+        android:id="@+id/navigationview_header_bg"
+        android:layout_width="match_parent"
+        android:background="@mipmap/ceshi"
+        android:layout_height="200dp" />
+<com.sgd.zitai.ui.widget.CircleImageView
+    android:id="@+id/navigationview_header_user_head"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="30dp"
+    android:layout_width="60dp"
+    android:layout_height="60dp"
+    android:src="@mipmap/test"/>
+
+    <TextView
+        android:id="@+id/navigationview_header_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textColor="@color/white"
+        android:layout_gravity="bottom"
+        android:padding="10dp"
+        android:textSize="16sp"
+        android:maxLength="20"
+        android:text="juhuacha18@gmail.com"/>
+</FrameLayout>
