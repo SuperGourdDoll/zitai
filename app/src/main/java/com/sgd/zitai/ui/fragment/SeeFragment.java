@@ -45,7 +45,11 @@ public class SeeFragment extends BaseFragment {
     private void initViewPager() {
         List<Fragment> fragments=new LinkedList<>();
         for (int i=0;i<3;i++) {
-            fragments.add(new VideoFragment());
+            if(i != 2 ) {
+                fragments.add(new VideoFragment());
+            }else{
+                fragments.add(TextFragment.newInstance());
+            }
         }
         MainViewPagerAdapter adapter=new MainViewPagerAdapter(getFragmentManager(),getActivity(),fragments);
         mViewPager.setAdapter(adapter);
