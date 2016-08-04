@@ -18,7 +18,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract void initialize();
 
-    protected void Snack(String content, View view) {
+    protected void S(String content, View view) {
         Snackbar.make(view, content, Snackbar.LENGTH_SHORT).show();
     }
 

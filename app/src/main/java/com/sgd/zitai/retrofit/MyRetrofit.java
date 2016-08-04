@@ -19,6 +19,10 @@ public class MyRetrofit {
     public MyRetrofit() {
     }
     private static class RetrofitHelp{
-       private static final Retrofit  retrofit=new Retrofit.Builder().baseUrl(ConstantCode.baseurl).addCallAdapterFactory(RxJavaCallAdapterFactory.create()).addConverterFactory(GsonConverterFactory.create()).build();
+       private static final Retrofit  retrofit=new Retrofit.Builder()
+               .baseUrl(ConstantCode.baseurl)
+               .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+               .addConverterFactory(GsonConverterFactory.create())
+               .build();
     }
 }

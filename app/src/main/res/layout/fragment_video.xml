@@ -7,9 +7,9 @@
         android:layout_width="match_parent"
         android:id="@+id/swipe_refresh"
         android:layout_height="match_parent">
-        <android.support.v7.widget.RecyclerView
+        <com.sgd.zitai.ui.widget.AutoLoadRecyclerView
             android:id="@+id/recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+            android:layout_height="match_parent"></com.sgd.zitai.ui.widget.AutoLoadRecyclerView>
     </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

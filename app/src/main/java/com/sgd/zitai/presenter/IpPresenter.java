@@ -20,11 +20,11 @@ public class IpPresenter implements IpInfoContract.Presenter {
     @Override
     public void loadData() {
         //这里可以封装成一个model，这里只关注回调就可以了
-        MyRetrofit.getInstance().create(ApiService.class).getIp(view.getIpNum()).compose(new ThreadTransformer<>(view.getLoadingView()))
-                .filter((IpBean bean) -> bean != null&&bean.getCode() == 0).subscribe((IpBean bean) -> {
-            view.dimissLoading();
-            view.refreshIpInfo(bean);
-        });
+//        MyRetrofit.getInstance().create(ApiService.class).getIp(view.getIpNum()).compose(new ThreadTransformer<>(view.getLoadingView()))
+//                .filter((IpBean bean) -> bean != null&&bean.getCode() == 0).subscribe((IpBean bean) -> {
+//            view.dimissLoading();
+//            view.refreshIpInfo(bean);
+//        });
     }
 
     @Override

@@ -10,4 +10,9 @@
     <string name="empty_view_hint">没有内容</string>
     <string name="no_network_view_hint">网络连接出错</string>
     <string name="error_view_hint">加载错误</string>
+    <string name="setting">设置</string>
+    <string name="night_mode">夜间模式</string>
+    <string name="about_app">关于app</string>
+    <string name="empty_data">还没有数据哦</string>
+    <string name="no_more_data">已经到底了</string>
 </resources>
