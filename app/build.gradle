@@ -47,4 +47,7 @@ dependencies {
     compile 'com.android.support:cardview-v7:23.+'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.9.7'
     compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.orhanobut:logger:1.15'
+    compile files('libs/rxjava-computation-expressions-0.21.0.jar')
+    compile 'cat.ereza:customactivityoncrash:1.5.0'
 }

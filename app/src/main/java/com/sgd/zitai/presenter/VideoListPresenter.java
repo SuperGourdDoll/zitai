@@ -10,6 +10,8 @@ import com.sgd.zitai.retrofit.service.ApiService;
 
 import java.util.ArrayList;
 
+import rx.android.schedulers.AndroidSchedulers;
+
 /**
  * Created by Allen Liu on 2016/8/4.
  */
@@ -28,8 +30,14 @@ public class VideoListPresenter implements VideoListContract.Presenter {
             MyRetrofit.getInstance()
                     .create(ApiService.class)
                     .getVideoList(page)
-                    .compose(new ThreadTransformer<>(view.getLoadingView()))
+                    .compose(new ThreadTransformer<>())
                     .filter(videoListBean1 -> (videoListBean1 != null && videoListBean1.getCode() == 0))
+                    .doOnSubscribe(() -> {
+                        view.getLoadingView().setRefreshing(true);
+                    })
+                    .doOnTerminate(() -> {
+                        view.getLoadingView().setRefreshing(false);
+                    })
                     .subscribe(videoListBean -> {
                         view.refreshData((ArrayList<VideoListBean.DataBean>) videoListBean.getData());
                     });

@@ -18,11 +18,17 @@ import com.sgd.zitai.contract.VideoListContract;
 import com.sgd.zitai.presenter.VideoListPresenter;
 import com.sgd.zitai.ui.BaseFragment;
 import com.sgd.zitai.ui.widget.AutoLoadRecyclerView;
+import com.sgd.zitai.utils.Rx.RxUtils;
 
 import java.util.ArrayList;
 
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import rx.Observable;
+import rx.Statement;
+import rx.android.schedulers.AndroidSchedulers;
+
 
 /**
  * Created by Allen Liu on 2016/8/2.
@@ -36,10 +42,7 @@ public class VideoFragment extends BaseFragment implements SwipeRefreshLayout.On
     private ArrayList<VideoListBean.DataBean> data;
     private int page = 1;
     private VideoListContract.Presenter presenter;
-    /**
-     * 是否正在加载更多 避免数据重复
-     */
-    private boolean isLoadingMore = false;
+
 
     @Nullable
     @Override
@@ -72,15 +75,17 @@ public class VideoFragment extends BaseFragment implements SwipeRefreshLayout.On
         recyclerview.setAdapter(adapter);
         recyclerview.setLoadMoreListener(() -> {
             //判断是否正在刷新
-            if (isLoadingMore)
-                return;
-            presenter.loadData();
-            isLoadingMore = true;
+            Observable.just(swipeRefresh.isRefreshing())
+                    .filter(aBoolean1 -> {
+                        return !aBoolean1;
+                    })
+                    .subscribe(aBoolean -> {
+                        presenter.loadData();
+                    });
         });
         swipeRefresh.setProgressViewOffset(false, 0, (int) TypedValue
                 .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, getResources()
                         .getDisplayMetrics()));
-        swipeRefresh.setRefreshing(true);
         onRefresh();
     }
 
@@ -90,8 +95,6 @@ public class VideoFragment extends BaseFragment implements SwipeRefreshLayout.On
     @Override
     public void onRefresh() {
         page = 1;
-        if (data != null)
-            data.clear();
         presenter.loadData();
     }
 
@@ -107,8 +110,31 @@ public class VideoFragment extends BaseFragment implements SwipeRefreshLayout.On
      */
     @Override
     public void refreshData(ArrayList<VideoListBean.DataBean> list) {
-        swipeRefresh.setRefreshing(false);
-        isLoadingMore = false;
+//        Observable<VideoListBean.DataBean>dataBeanObservable=Observable.from(list).compose(RxUtils.rxSchedulerHelper());
+//        Observable empty=Observable.empty();
+//        Statement.ifThen(()->{return list!=null&&list.size()>0;},dataBeanObservable,empty);
+//        dataBeanObservable.subscribe(dataBean -> {
+//            if (page == 1) {
+//                data.clear();
+//                data.addAll(list);
+//                adapter.notifyDataSetChanged();
+//            } else {
+//                int position = data.size();
+//                data.addAll(list);
+//                adapter.notifyItemInserted(position);
+//            }
+//            page++;
+//        });
+//        empty.subscribe(o -> {},throwable -> {},() -> {
+//            if (page == 1) {
+//                S(getString(R.string.empty_data), recyclerview);
+//                adapter.notifyDataSetChanged();
+//            } else {
+//                S(getString(R.string.no_more_data) + data.size(), recyclerview);
+//            }
+//        });
+
+
         if (list != null && list.size() > 0) {
             if (page == 1) {
                 data.clear();
@@ -124,6 +150,7 @@ public class VideoFragment extends BaseFragment implements SwipeRefreshLayout.On
         } else {
             if (page == 1) {
                 S(getString(R.string.empty_data), recyclerview);
+                data.clear();
                 adapter.notifyDataSetChanged();
             } else {
                 S(getString(R.string.no_more_data) + data.size(), recyclerview);

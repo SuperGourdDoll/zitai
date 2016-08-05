@@ -20,5 +20,6 @@ public class VideoListContract {
         SwipeRefreshLayout getLoadingView();
         void refreshData(ArrayList<VideoListBean.DataBean> list);
        int getCurrentPage();
+
     }
 }

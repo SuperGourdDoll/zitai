@@ -103,6 +103,7 @@ public class MainActivity extends BaseActivity {
                     break;
                 case R.id.item_voice:
                     Snackbar.make(navigationView, "voice", Snackbar.LENGTH_SHORT).show();
+                  //  throw  new RuntimeException("ssss");
                     break;
                 case R.id.item_collection:
                     Snackbar.make(navigationView, "collection", Snackbar.LENGTH_SHORT).show();
