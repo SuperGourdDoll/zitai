@@ -18,7 +18,6 @@ public class VideoListContract {
     }
     public interface  View extends BaseView<Presenter> {
         SwipeRefreshLayout getLoadingView();
-        void dimissLoading();
         void refreshData(ArrayList<VideoListBean.DataBean> list);
        int getCurrentPage();
     }

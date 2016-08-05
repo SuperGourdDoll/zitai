@@ -23,16 +23,16 @@ public class VideoListPresenter implements VideoListContract.Presenter {
 
     @Override
     public synchronized void loadData() {
-        synchronized (this){
-        int page = view.getCurrentPage();
-        MyRetrofit.getInstance()
-                .create(ApiService.class)
-                .getVideoList(page)
-                .compose(new ThreadTransformer<>(view.getLoadingView()))
-                .filter(videoListBean1 -> (videoListBean1 != null && videoListBean1.getCode() == 0))
-                .subscribe(videoListBean -> {
-                    view.refreshData((ArrayList<VideoListBean.DataBean>) videoListBean.getData());
-                });
+        synchronized (this) {
+            int page = view.getCurrentPage();
+            MyRetrofit.getInstance()
+                    .create(ApiService.class)
+                    .getVideoList(page)
+                    .compose(new ThreadTransformer<>(view.getLoadingView()))
+                    .filter(videoListBean1 -> (videoListBean1 != null && videoListBean1.getCode() == 0))
+                    .subscribe(videoListBean -> {
+                        view.refreshData((ArrayList<VideoListBean.DataBean>) videoListBean.getData());
+                    });
         }
     }
 

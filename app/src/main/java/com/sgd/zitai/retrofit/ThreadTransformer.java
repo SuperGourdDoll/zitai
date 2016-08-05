@@ -20,8 +20,9 @@ import rx.schedulers.Schedulers;
  */
 public class ThreadTransformer<S> implements Observable.Transformer<S, S> {
     Object refreshview;
+
     public ThreadTransformer(Object refreshview) {
-        this.refreshview=refreshview;
+        this.refreshview = refreshview;
     }
 
     @Override
@@ -33,9 +34,9 @@ public class ThreadTransformer<S> implements Observable.Transformer<S, S> {
                 .unsubscribeOn(AndroidSchedulers.mainThread())
                 .onErrorReturn(throwable -> {
                     //这里可以多加else判断 用于错误的时候加载匡处理
-                      if(refreshview instanceof SwipeRefreshLayout){
-                          ((SwipeRefreshLayout)refreshview).setRefreshing(false);
-                      }
+                    if (refreshview instanceof SwipeRefreshLayout) {
+                        ((SwipeRefreshLayout) refreshview).setRefreshing(false);
+                    }
                     //直接弹toast
                     if (ZiTaiApplication.context != null)
                         ToastUtils.showToast(ZiTaiApplication.context, throwable.getMessage());

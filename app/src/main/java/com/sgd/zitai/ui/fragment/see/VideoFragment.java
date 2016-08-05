@@ -9,7 +9,6 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.sgd.zitai.R;
@@ -37,6 +36,10 @@ public class VideoFragment extends BaseFragment implements SwipeRefreshLayout.On
     private ArrayList<VideoListBean.DataBean> data;
     private int page = 1;
     private VideoListContract.Presenter presenter;
+    /**
+     * 是否正在加载更多 避免数据重复
+     */
+    private boolean isLoadingMore = false;
 
     @Nullable
     @Override
@@ -57,11 +60,8 @@ public class VideoFragment extends BaseFragment implements SwipeRefreshLayout.On
     private void initRecyclerView() {
         swipeRefresh.setColorSchemeResources(R.color.main_theme_color);
         swipeRefresh.setOnRefreshListener(this);
-        swipeRefresh.setProgressViewOffset(false, 0, (int) TypedValue
-                .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, getResources()
-                        .getDisplayMetrics()));
         data = new ArrayList<>();
-        adapter = new VideoListAdapter(getActivity(),R.layout.layout_videolist_item, data);
+        adapter = new VideoListAdapter(getActivity(), R.layout.layout_videolist_item, data);
         //点击事件
         adapter.setOnRecyclerViewItemClickListener(this);
         //设置动画
@@ -70,10 +70,17 @@ public class VideoFragment extends BaseFragment implements SwipeRefreshLayout.On
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerview.setLayoutManager(layoutManager);
         recyclerview.setAdapter(adapter);
-        presenter.loadData();
         recyclerview.setLoadMoreListener(() -> {
+            //判断是否正在刷新
+            if (isLoadingMore)
+                return;
             presenter.loadData();
+            isLoadingMore = true;
         });
+        swipeRefresh.setProgressViewOffset(false, 0, (int) TypedValue
+                .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, getResources()
+                        .getDisplayMetrics()));
+        swipeRefresh.setRefreshing(true);
         onRefresh();
     }
 
@@ -93,24 +100,15 @@ public class VideoFragment extends BaseFragment implements SwipeRefreshLayout.On
         T("click");
     }
 
-
-    @Override
-    public SwipeRefreshLayout getLoadingView() {
-        return swipeRefresh;
-    }
-
-    @Override
-    public void dimissLoading() {
-        swipeRefresh.setRefreshing(false);
-    }
-
     /**
      * presenter刷新数据
+     *
      * @param list
      */
     @Override
     public void refreshData(ArrayList<VideoListBean.DataBean> list) {
-        dimissLoading();
+        swipeRefresh.setRefreshing(false);
+        isLoadingMore = false;
         if (list != null && list.size() > 0) {
             if (page == 1) {
                 data.clear();
@@ -142,5 +140,10 @@ public class VideoFragment extends BaseFragment implements SwipeRefreshLayout.On
     @Override
     public void bindPresenter(VideoListContract.Presenter preenter) {
         this.presenter = preenter;
+    }
+
+    @Override
+    public SwipeRefreshLayout getLoadingView() {
+        return swipeRefresh;
     }
 }
