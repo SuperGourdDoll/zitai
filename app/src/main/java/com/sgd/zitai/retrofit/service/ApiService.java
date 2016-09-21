@@ -13,6 +13,6 @@ import rx.Observable;
  * Created by maomao on 2016/4/12.
  */
 public interface    ApiService {
-    @GET("/zitai-server/index.php/videos/vlist")
-    Observable<VideoListBean>getVideoList(@Query("page")int page);
+    @GET("videos/vlist")
+Observable<VideoListBean>getVideoList(@Query("page")int page);
 }

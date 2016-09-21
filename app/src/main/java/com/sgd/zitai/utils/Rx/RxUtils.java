@@ -3,7 +3,6 @@ package com.sgd.zitai.utils.Rx;
 import android.util.Log;
 
 import com.orhanobut.logger.Logger;
-import com.squareup.leakcanary.CanaryLog;
 
 
 import rx.Observable;
