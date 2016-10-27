@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="rxjava-computation-expressions-0.21.0">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/app/libs/rxjava-computation-expressions-0.21.0.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
