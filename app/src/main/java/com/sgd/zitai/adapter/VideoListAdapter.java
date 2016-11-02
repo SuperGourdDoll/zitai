@@ -26,6 +26,6 @@ Context context;
     protected void convert(BaseViewHolder baseViewHolder, VideoListBean.DataBean videoListBean) {
         baseViewHolder.setText(R.id.tv_author,videoListBean.getAuthor());
         ImageView imageView=baseViewHolder.getView(R.id.iv_img);
-        Glide.with(context).load(ConstantCode.baseImgUrl+videoListBean.getVideocover()).centerCrop().placeholder(R.mipmap.ceshi).crossFade().into(imageView);
+        Glide.with(context).load(videoListBean.getVideocover()).centerCrop().placeholder(R.mipmap.ceshi).crossFade().into(imageView);
     }
 }

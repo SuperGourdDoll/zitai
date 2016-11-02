@@ -10,9 +10,9 @@ import retrofit.http.QueryMap;
 import rx.Observable;
 
 /**
- * Created by maomao on 2016/4/12.
+ * Created by AllenLiu on 2016/4/12.
  */
 public interface    ApiService {
-    @GET("videos/vlist")
+    @GET("/zitai-server/index.php/videos/vlist")
 Observable<VideoListBean>getVideoList(@Query("page")int page);
 }
