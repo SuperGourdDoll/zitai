@@ -41,7 +41,7 @@ public class VideoListAdapter extends BaseQuickAdapter<VideoListBean.DataBean> {
         TextView tvAuthor = baseViewHolder.getView(R.id.tv_author);
         VideoPlayerView player = baseViewHolder.getView(R.id.player);
         tvAuthor.setText(videoListBean.getAuthor());
-        player.setUp(videoListBean.getContent(), JCVideoPlayer.SCREEN_LAYOUT_LIST);
+        player.setUp(videoListBean.getContent(), JCVideoPlayer.SCREEN_LAYOUT_LIST,"");
         player.setOnFlayerFinsh(new IFlayerFinishListener() {
             @Override
             public void onFinish() {

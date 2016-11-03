@@ -97,11 +97,13 @@ public class VideoFragment extends BaseFragment implements SwipeRefreshLayout.On
 
             @Override
             public void onChildViewDetachedFromWindow(View view) {
-                if (JCVideoPlayerManager.getFirst() != null) {
+//                if (JCVideoPlayerManager.getFirst() != null) {
+//                    JCVideoPlayer videoPlayer = (JCVideoPlayer) JCVideoPlayerManager.getFirst();
+//                    if (((ViewGroup) view).indexOfChild(videoPlayer) != -1 && videoPlayer.currentState == JCVideoPlayer.CURRENT_STATE_PLAYING) {
                         JCVideoPlayer.releaseAllVideos();
-                        Logger.e("release");
-
-            }}
+//                    }
+//                }
+            }
         });
         swipeRefresh.setProgressViewOffset(false, 0, (int) TypedValue
                 .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, getResources()
