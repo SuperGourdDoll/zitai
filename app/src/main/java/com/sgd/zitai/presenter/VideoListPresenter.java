@@ -10,6 +10,8 @@ import com.sgd.zitai.retrofit.service.ApiService;
 
 import java.util.ArrayList;
 
+import fm.jiecao.jcvideoplayer_lib.JCMediaManager;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 import rx.android.schedulers.AndroidSchedulers;
 
 /**

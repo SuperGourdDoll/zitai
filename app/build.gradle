@@ -47,4 +47,6 @@ dependencies {
     compile 'com.orhanobut:logger:1.15'
     compile files('libs/rxjava-computation-expressions-0.21.0.jar')
     compile 'cat.ereza:customactivityoncrash:1.5.0'
+    compile 'fm.jiecao:jiecaovideoplayer:4.8.1'
+
 }

@@ -8,6 +8,7 @@ import android.view.View;
 import com.sgd.zitai.utils.ToastUtils;
 
 import butterknife.ButterKnife;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
 
 /**
@@ -39,4 +40,5 @@ public abstract class BaseActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initialize();
     }
+
 }

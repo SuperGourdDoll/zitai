@@ -9,8 +9,10 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.orhanobut.logger.Logger;
 import com.sgd.zitai.R;
 import com.sgd.zitai.adapter.VideoListAdapter;
 import com.sgd.zitai.bean.VideoListBean;
@@ -25,9 +27,13 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerManager;
 import rx.Observable;
 import rx.Statement;
 import rx.android.schedulers.AndroidSchedulers;
+
+import static android.media.CamcorderProfile.get;
 
 
 /**
@@ -83,6 +89,20 @@ public class VideoFragment extends BaseFragment implements SwipeRefreshLayout.On
                         presenter.loadData();
                     });
         });
+        recyclerview.addOnChildAttachStateChangeListener(new RecyclerView.OnChildAttachStateChangeListener() {
+            @Override
+            public void onChildViewAttachedToWindow(View view) {
+
+            }
+
+            @Override
+            public void onChildViewDetachedFromWindow(View view) {
+                if (JCVideoPlayerManager.getFirst() != null) {
+                        JCVideoPlayer.releaseAllVideos();
+                        Logger.e("release");
+
+            }}
+        });
         swipeRefresh.setProgressViewOffset(false, 0, (int) TypedValue
                 .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, getResources()
                         .getDisplayMetrics()));
@@ -96,11 +116,12 @@ public class VideoFragment extends BaseFragment implements SwipeRefreshLayout.On
     public void onRefresh() {
         page = 1;
         presenter.loadData();
+        JCVideoPlayer.releaseAllVideos();
     }
 
     @Override
     public void onItemClick(View view, int i) {
-        T("click");
+
     }
 
     /**
@@ -173,4 +194,6 @@ public class VideoFragment extends BaseFragment implements SwipeRefreshLayout.On
     public SwipeRefreshLayout getLoadingView() {
         return swipeRefresh;
     }
+
+
 }
